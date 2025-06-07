@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debt Repayment Planner</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: url('') no-repeat center center fixed;
+      background-size: cover;
+      padding: 30px;
+      color: #1e293b;
+    }
+
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar h2 {
+      margin: 0;
+      font-size: 1.4em;
+      color: #0f172a;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .navbar a:hover {
+      background-color: #1d4ed8;
+    }
+
+    .debt-entry {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+      margin-bottom: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: 500;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .output {
+      margin-top: 20px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    #debt-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .form-section {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .centered {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h2>Debt Repayment Planner</h2>
+    <a href="index.html">Home</a>
+  </div>
+
+  <div id="debt-list">
+    <div class="debt-entry">
+      <input type="text" placeholder="Debt Name" class="debt-name">
+      <input type="number" placeholder="Balance (ZMW)" class="debt-balance">
+      <input type="number" placeholder="Interest Rate (%)" class="debt-interest">
+      <input type="number" placeholder="Min Monthly Payment" class="debt-min-payment">
+    </div>
+  </div>
+
+  <div class="centered">
+    <button onclick="addDebt()">+ Add Another Debt</button>
+  </div>
+
+  <div class="form-section">
+    <div>
+      <label>Total Monthly Amount You Can Pay (ZMW):</label>
+      <input type="number" id="total-monthly-payment">
+    </div>
+
+    <div>
+      <label>Repayment Strategy:</label>
+      <select id="strategy">
+        <option value="avalanche">Avalanche (High Interest First)</option>
+        <option value="snowball">Snowball (Smallest Balance First)</option>
+      </select>
+    </div>
+
+    <div class="centered" style="align-self: end;">
+      <button onclick="calculatePlan()">Calculate Repayment Plan</button>
+    </div>
+  </div>
+
+  <div class="output" id="results"></div>
+
+  <script>
+    function addDebt() {
+      const debtList = document.getElementById("debt-list");
+      const newDebt = document.createElement("div");
+      newDebt.className = "debt-entry";
+      newDebt.innerHTML = `
+        <input type="text" placeholder="Debt Name" class="debt-name">
+        <input type="number" placeholder="Balance (ZMW)" class="debt-balance">
+        <input type="number" placeholder="Interest Rate (%)" class="debt-interest">
+        <input type="number" placeholder="Min Monthly Payment" class="debt-min-payment">
+      `;
+      debtList.appendChild(newDebt);
+    }
+
+    function calculatePlan() {
+      const debts = [];
+      const entries = document.querySelectorAll('.debt-entry');
+      entries.forEach(entry => {
+        debts.push({
+          name: entry.querySelector('.debt-name').value,
+          balance: parseFloat(entry.querySelector('.debt-balance').value),
+          interest: parseFloat(entry.querySelector('.debt-interest').value),
+          minPayment: parseFloat(entry.querySelector('.debt-min-payment').value)
+        });
+      });
+
+      const strategy = document.getElementById("strategy").value;
+      const totalMonthly = parseFloat(document.getElementById("total-monthly-payment").value);
+      let months = 0, totalInterest = 0;
+
+      const debtsCopy = [...debts];
+      if (strategy === "avalanche") {
+        debtsCopy.sort((a, b) => b.interest - a.interest);
+      } else {
+        debtsCopy.sort((a, b) => a.balance - b.balance);
+      }
+
+      while (debtsCopy.some(d => d.balance > 0)) {
+        let monthlyLeft = totalMonthly;
+        for (let debt of debtsCopy) {
+          if (debt.balance <= 0) continue;
+
+          const interestThisMonth = (debt.interest / 100 / 12) * debt.balance;
+          totalInterest += interestThisMonth;
+          const payment = Math.min(debt.minPayment, debt.balance);
+          const extra = Math.min(monthlyLeft - payment, debt.balance - payment);
+
+          debt.balance -= (payment + extra - interestThisMonth);
+          monthlyLeft -= (payment + extra);
+        }
+        months++;
+        if (months > 600) break;
+      }
+
+      document.getElementById("results").innerHTML =
+        `<h2>Results</h2>
+         <p><strong>Total Time:</strong> ${months} months</p>
+         <p><strong>Total Interest Paid:</strong> ZMW ${totalInterest.toFixed(2)}</p>`;
+    }
+  </script>
+
+</body>
+</html>

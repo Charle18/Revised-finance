@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealth Wise - Empower Your Financial Future</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">` 
+            <i class="fas fa-piggy-bank logo-icon"></i>
+            <h1>Wealth Wise</h1>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="Budgeting calculator.html">Budgeting</a></li>
+                <li><a href="Debt Repayment Planner .html">Debt Planner</a></li>
+                <li><a href="Investment Calculator.html">Investments</a></li>
+                <li><a href="savings goal tracker.html">Savings</a></li>
+                <li><a href="Retirement Planning Calculator.html">Retirement</a></li>
+                <li><a href="Education Hub.html">Education</a></li>
+                <li><a href="Community Forum.html">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <video autoplay muted loop class="hero-video">
+                <source src="finance-background.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-content">
+                <h2>Take Control of Your Financial Future</h2>
+                <p>Wealth Wise provides the tools and knowledge you need to make smart financial decisions, grow your wealth, and achieve your money goals.</p>
+                <div class="hero-buttons">
+                    <a href="#tools" class="btn">Explore Tools</a>
+                    <a href="Education Hub.html" class="btn btn-outline">Learn Finance</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="section-title">
+                <h2>Why Choose Wealth Wise?</h2>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure & Private</h3>
+                    <p>Your financial data is always protected with bank-level encryption. We never sell your information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access all our tools from any device. Your financial dashboard goes wherever you go.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Expert Guidance</h3>
+                    <p>Learn from financial experts through our comprehensive Education Hub.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tools">
+            <div class="section-title">
+                <h2>Financial Tools</h2>
+            </div>
+            <div class="currency-selector">
+                <label for="currency-selector">Select Currency: </label>
+                <select id="currency-selector">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="ZMW">ZMW (ZK)</option>
+                    <option value="RAND">SAR (R)</option>
+                </select>
+            </div>
+            <div class="tools-container">
+                <div class="tool-card" onclick="window.location.href='Budgeting Calculator.html'">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Budgeting Calculator</h3>
+                    <p>Create and manage your monthly budget with ease.</p>
+                </div>
+                <div class="tool-card" onclick="window.location.href='Investment Calculator.html'">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Investment Calculator</h3>
+                    <p>Project your investment growth over time.</p>
+                </div>
+                <div class="tool-card" onclick="window.location.href='Debt Repayment Planner .html'">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Debt Repayment Planner</h3>
+                    <p>Strategize your path to becoming debt-free.</p>
+                </div>
+                <div class="tool-card" onclick="window.location.href='savings goal tracker.html'">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Savings Goal Tracker</h3>
+                    <p>Set and track progress toward your savings goals.</p>
+                </div>
+                <div class="tool-card" onclick="window.location.href='Retirement Planning Calculator.html'">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h3>Retirement Planner</h3>
+                    <p>Plan for a comfortable and secure retirement.</p>
+                </div>
+                <div class="tool-card" onclick="window.location.href='Community Forum.html'">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Forum</h3>
+                    <p>Connect with others on similar financial journeys.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="financial-tips">
+            <div class="section-title">
+                <h2>Financial Tips</h2>
+            </div>
+            <div class="tips-container">
+                <div class="financial-tip">
+                    <h3>Pay Yourself First</h3>
+                    <p>Set aside at least 20% of your income for savings and investments before spending on anything else. This ensures you're building wealth with every paycheck.</p>
+                </div>
+                <div class="financial-tip">
+                    <h3>Emergency Fund Essentials</h3>
+                    <p>Aim to save 3-6 months' worth of living expenses in an easily accessible account. This financial cushion can help you weather unexpected expenses without going into debt.</p>
+                </div>
+                <div class="financial-tip">
+                    <h3>Debt Snowball Method</h3>
+                    <p>Pay off debts from smallest to largest balance while making minimum payments on all others. The psychological wins will keep you motivated to become debt-free.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="milestones">
+            <div class="section-title">
+                <h2>Financial Milestones</h2>
+            </div>
+            <div class="milestones-container">
+                <div class="milestone-card">
+                    <h3>First $1,000 Saved</h3>
+                    <p>The foundation of your financial security starts with your first $1,000 emergency fund.</p>
+                </div>
+                <div class="milestone-card">
+                    <h3>Debt Free</h3>
+                    <p>Eliminating all consumer debt (except mortgage) is a major step toward financial freedom.</p>
+                </div>
+                <div class="milestone-card">
+                    <h3>3-6 Month Emergency Fund</h3>
+                    <p>Having a fully funded emergency fund means you're prepared for life's unexpected events.</p>
+                </div>
+                <div class="milestone-card">
+                    <h3>Investing 15% of Income</h3>
+                    <p>Consistently investing a portion of your income builds long-term wealth.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education-preview">
+            <div class="section-title">
+                <h2>Financial Education</h2>
+            </div>
+            <div class="features">
+                <div class="feature-card" onclick="window.location.href='Education Hub.html#budgeting'">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3>Budgeting Basics</h3>
+                    <p>Learn how to create and stick to a budget that works for your lifestyle.</p>
+                    <a href="Education Hub.html#budgeting" class="btn btn-outline" style="margin-top: 1rem;">Learn More</a>
+                </div>
+                <div class="feature-card" onclick="window.location.href='Education Hub.html#investing'">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Investing 101</h3>
+                    <p>Understand the fundamentals of building wealth through investments.</p>
+                    <a href="Education Hub.html#investing" class="btn btn-outline" style="margin-top: 1rem;">Learn More</a>
+                </div>
+                <div class="feature-card" onclick="window.location.href='Education Hub.html#debt'">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Debt Management</h3>
+                    <p>Strategies to eliminate debt and improve your financial health.</p>
+                    <a href="Education Hub.html#debt" class="btn btn-outline" style="margin-top: 1rem;">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="newsletter">
+            <h3>Stay Updated with Wealth Wise</h3>
+            <p>Subscribe to our newsletter for financial tips, tool updates, and exclusive content.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Wealth Wise</h3>
+                <p>Empowering your financial journey with innovative tools and expert knowledge.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Tools</h3>
+                <ul>
+                    <li><a href="Budgeting calculator.html">Budgeting Calculator</a></li>
+                    <li><a href="Debt Repayment Planner .html">Debt Repayment Planner</a></li>
+                    <li><a href="Investment Calculator.html">Investment Calculator</a></li>
+                    <li><a href="savings goal tracker.html">Savings Goal Tracker</a></li>
+                    <li><a href="Retirement Planning Calculator.html">Retirement Planner</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="Education Hub.html">Education Hub</a></li>
+                    <li><a href="Community Forum.html">Community Forum</a></li>
+                    <li><a href="https://www.investopedia.com/financial-term-dictionary-4769738" target="_blank">Financial Glossary</a></li>
+                    <li><a href="https://www.nerdwallet.com/blog" target="_blank">Blog</a></li>
+                    <li><a href="https://www.bankrate.com/glossary/f/faq/" target="_blank">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="About Us.html">About Us</a></li>
+                    <li><a href="https://www.indeed.com/q-Finance-Careers-jobs.html" target="_blank">Careers</a></li>
+                    <li><a href="https://www.prnewswire.com/news/finance/" target="_blank">Press</a></li>
+                    <li><a href="https://www.example.com/contact" target="_blank">Contact Us</a></li>
+                    <li><a href="https://www.privacyinternational.org/explainer/47/privacy-policy" target="_blank">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>CREATED BY ENGINEER CHARLES MUMBA</p>
+            <p>&copy; 2025 Wealth Wise. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
